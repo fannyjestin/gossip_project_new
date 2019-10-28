@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   get '/gossip/:id', to: 'dynamic_pages#gossip', as: 'gossip'
 
-  get '/welcome/:id', to: 'dynamic_pages#welcome', as: 'user'
+  get '/welcome/:id', to: 'dynamic_pages#welcome'
+
+  get '/user/:id', to: 'dynamic_pages#user', as: 'user'
 end

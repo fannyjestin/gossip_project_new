@@ -7,4 +7,8 @@ class DynamicPagesController < ApplicationController
   	params[:gossip] = Gossip.find(params[:id])
   end
 
+  def user
+    params[:user] = User.find(params[:id]) #POUR LA RECHERCHE EN BDD
+  end 
+  
 end

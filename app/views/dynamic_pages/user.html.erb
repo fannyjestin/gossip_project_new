@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-   <title>Bienvenue sur la page du Gossip <%= params[:gossip].title %> </title>
+   <title>Bienvenue sur la page de <%= params[:user].first_name %> </title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,29 +33,28 @@
   <header class="masthead">
     <div class="container">
       <div class="intro-text">
-        <div class="intro-lead-in">BIENVENUE sur la page du gossip <%= params[:gossip].title %> ! C'est le potin numéro <%= params[:gossip].id %>, il est chouette nan ??? </div>
+        <div class="intro-lead-in">BIENVENUE sur la page de  <%= params[:user].first_name %> <%= params[:user].last_name %> ! Ici, c'est le profil de ce user, chouette nan ??? </div>
 
-        <div class="intro-heading text-uppercase">Tu peux voir  ci-dessous la description du potin en entier !</div>
+        <div class="intro-heading text-uppercase">Tu peux voir  ci-dessous la liste des potins qu'il a crée' !</div>
       </div>
     </div>
   </header>
   
+  <p>Infos sur cette personne : <br/>
+    Prénom : <%= params[:user].first_name %> <br/>
+    Nom de Famille : <%= params[:user].last_name %> <br/>
+    description : <%= params[:user].description %> <br/>
 
+
+    <p> <% params[:user].gossips.each do |gossip|  %> </p>
        <!-- Three columns of text below the carousel -->
         <div class="row">
           <div class="col-lg-4">
             <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2><%= params[:gossip].title %></h2>
-            <p>Publié par : <%= link_to params[:gossip].user.first_name , user_path(:id => params[:gossip].user_id ) %></p>
-            <p>Infos sur <%=params[:gossip].user.first_name %> : <br/>
-              last name: <%=params[:gossip].user.last_name %> <br/>
-              description: <%=params[:gossip].user.description %> <br/>
-              email: <%=params[:gossip].user.last_name %> <br/>
-            </p> 
+            <h2><%= gossip.title %></h2>
+            <p><%= gossip.user.first_name %></p>
+    <% end %>
 
-            <p><%= params[:gossip].content %></p>
-            <p>Créer le : <%= params[:gossip].created_at %></p>
-  
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
