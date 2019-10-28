@@ -8,8 +8,9 @@ class StaticPagesController < ApplicationController
   def contact
   end
   
-  def welcome 
+  def home 
   	params[:gossip_array] = Gossip.all 
   end 
+
 
 end

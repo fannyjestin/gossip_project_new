@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get '/welcome/:first_name', to: 'dynamic_pages#welcome'
-
 
   get '/contact', to: 'static_pages#contact'
 
   get '/team', to: 'static_pages#team'
 
-  get '/welcome', to: 'static_pages#welcome'
+  get '/home', to: 'static_pages#home'
 
+  get '/gossip/:id', to: 'dynamic_pages#gossip', as: 'gossip'
+
+  get '/welcome/:id', to: 'dynamic_pages#welcome', as: 'user'
 end

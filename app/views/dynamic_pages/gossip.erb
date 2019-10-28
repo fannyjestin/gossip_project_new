@@ -1,3 +1,5 @@
+
+
 <html lang="en">
 
 <head>
@@ -6,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-   <title>Welcome Page</title>
+   <title>Bienvenue sur la page du Gossip <%= params[:gossip].title %> </title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,22 +33,22 @@
   <header class="masthead">
     <div class="container">
       <div class="intro-text">
-        <div class="intro-lead-in">Bienvenue sur Gossip Project !</div>
-        <div class="intro-heading text-uppercase">Vous allez trouver ci-dessous la liste des potins déjà crées !</div>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Crée ton potin dès maintenant !</a>
+        <div class="intro-lead-in">BIENVENUE sur la page du gossip <%= params[:gossip].title %> ! C'est le potin numéro <%= params[:gossip].id %>, il est chouette nan ??? </div>
+
+        <div class="intro-heading text-uppercase">Tu peux voir  ci-dessous la description du potin en entier !</div>
       </div>
     </div>
   </header>
   
 
-    <p> <% params[:gossip_array].each do |gossip|  %> </p>
        <!-- Three columns of text below the carousel -->
         <div class="row">
           <div class="col-lg-4">
             <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2><%= gossip.title %></h2>
-            <p><%= gossip.user.first_name %></p>
-    <% end %>
+            <h2><%= params[:gossip].title %></h2>
+            <p><%= params[:gossip].user.first_name %></p>
+            <p><%= params[:gossip].content %></p>
+  
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
