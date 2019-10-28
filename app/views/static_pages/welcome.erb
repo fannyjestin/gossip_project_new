@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Welcome</title>
+</head>
+
+
+<body>
+
+<h1> </h1>
+
+<h2> Vous allez trouver ci-dessous la liste des potins déjà crées ! </h2>
+
+<p> <%= params[:gossip_array].each do |gossip|  %> </p>
+<p> <%= gossip.title %> </p>
+<p> <%= gossip.user.first_name %> </p>
+
+<% end %>
+
+</body>
+
+</html>
+
+
+
+
