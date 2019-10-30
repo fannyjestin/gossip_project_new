@@ -5,6 +5,7 @@ root "gossips#index"
 resources :gossips
 resources :users
 resources :cities 
+resources :comments
 
 
   get '/contact', to: 'static_pages#contact'

@@ -55,8 +55,10 @@ end
 
   def destroy
      @gossip = Gossip.find(params[:id])
+     puts "*" * 60
      @gossip.destroy
-     redirect_to action: "index"
+     puts "*" * 60
+     redirect_to :action => "index"
 
   end
 
