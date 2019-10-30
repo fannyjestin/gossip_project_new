@@ -1,0 +1,49 @@
+<%content_for :title, "Gossip" %>
+
+<% if params[:notice] %>
+ <div class="alert alert-success">
+  <strong>Success!</strong> We added your Gossip to the database.
+</div>
+<% end %>
+
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Bienvenue sur la page du gossip <%= @gossip.title %> !</h1>
+          <p class="lead text-muted"> C'est le potin numéro <%= @gossip.id %>, il est chouette nan ??? <br/>
+        Tu peux voir  ci-dessous la description du potin en entier !
+          </p>
+          <p>
+            <%= link_to "Créer ton potin", new_gossip_path, :class => "btn btn-secondary my-2" %>
+          </p>
+        </div>
+      </section>
+
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-12 box-shadow">
+                  <p class="card-text center">Titre du potin : <%= @gossip.title %><br/> <br/>
+                Contenu du potin : <br/> <%= @gossip.content %> <br/> <br/>
+                Publié par : <%= link_to @gossip.user.first_name , user_path(:id => @gossip.user_id ) %> <br/>
+              Ville de <%=@gossip.user.first_name %> : 
+              <%= link_to @gossip.user.city.name , city_path(:id => @gossip.user.city_id ) %> 
+              <br/>
+
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group center">
+                      <%= link_to "Edit", edit_gossip_path, :class => "btn btn-sm btn-outline-secondary" %>
+                    </div>
+                  </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
