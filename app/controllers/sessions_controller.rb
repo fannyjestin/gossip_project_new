@@ -26,6 +26,7 @@ class SessionsController < ApplicationController
      puts "*" * 60
      session.delete(:user_id)
      puts "*" * 60
-     redirect_to root_path
+    flash[:success] = "Deconnexion réussie"
+    redirect_to root_path
   end
 end

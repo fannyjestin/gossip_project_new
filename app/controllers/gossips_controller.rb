@@ -1,11 +1,13 @@
 class GossipsController < ApplicationController
-  
+
+  before_action :authenticate_user, only: [:new, :edit, :update, :create, :destroy]
+#valable pour les méthodes entre crochet
+
   def index
     params[:gossip_array] = Gossip.all 
    puts "##" *60
       	puts params[:gossip_array]
   end
-
 
 
   def new
@@ -19,8 +21,8 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new(
                    title: params[:gossip_title],
                    content: params[:gossip_content],
-                   user_id: 1)
-    @gossip.user = User.find_by(id: session[:user_id])
+                   user_id: current_user.id)
+
 
   
   if @gossip.save
@@ -31,7 +33,6 @@ class GossipsController < ApplicationController
   else
     render "new"
   end 
-
 end
 
 
@@ -64,9 +65,16 @@ end
      @gossip.destroy
      puts "*" * 60
      redirect_to :action => "index"
-
   end
 
+    private
+
+      def authenticate_user
+        unless current_user
+          flash[:danger] = "Connecte toi pour accéder à la page :)"
+          redirect_to new_session_path
+      end
+    end 
 
 end 
 

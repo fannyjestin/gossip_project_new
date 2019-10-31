@@ -37,9 +37,23 @@
       </li>
       <li class="nav-link">
           <%= link_to "Contact", contact_path, :class => "nav_item active" %>
-            <li class="nav-link">
+
+      <li class="nav-link">
+    <% if session_en_cours? %>
+       <%= link_to "Bienvenue " + current_user.first_name,  {controller: "users", action: "show", id: current_user.id}, :class => "nav_item active" %>
+    <% else %>
       <%= link_to "S'inscrire", new_user_path, :class => "nav_item active" %>
+     <% end %>  
+      </li>
+
+    <li class="nav-link">
+    <% if session_en_cours? %>
+      <%= link_to "Se déconnecter", session_path(session.id), method: :delete , :class => "nav_item active"%>
+    <% else %>
+      <%= link_to "Se connecter", sessions_new_path, :class => "nav_item active" %>
+    <% end %> 
       </li> 
+
     </ul>       
   </div>
 </nav>
