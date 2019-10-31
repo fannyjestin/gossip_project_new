@@ -6,11 +6,6 @@
 </div>
 <% end %>
 
-<% if params[:notice] %>
- <div class="alert alert-success">
-  <strong>Success!</strong> We added your Gossip to the database.
-</div>
-<% end %>
 
     <main role="main">
 
@@ -20,8 +15,7 @@
 
           <p class="lead text-muted">Vous allez trouver ci-dessous la liste des potins déjà crées</p>
           <p>
-            <%= link_to "Créer ton potin", new_gossip_path, :class => "btn btn-primary my-2" %>
-            <a href="#" class="btn btn-secondary my-2">Abonne toi !</a>
+            <%= link_to "Créer ton potin", new_gossip_path, :class => "btn btn-primary my-12" %>
           </p>
         </div>
       </section>

@@ -40,8 +40,7 @@
                   <p class="card-text"><%= gossip.title %> by <%= gossip.user.first_name %></p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <%= link_to "View", gossip_path(:id => gossip.id), :class => "btn btn-sm btn-outline-secondary" %>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">comment</button>
+                      <%= link_to "Voir la page du Gossip", gossip_path(:id => gossip.id), :class => "btn btn-sm btn-outline-secondary" %>
                     </div>
                     <small class="text-muted">crée le : <%= gossip.created_at %></small>
                   </div>

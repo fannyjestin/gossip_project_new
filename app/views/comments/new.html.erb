@@ -1,8 +1,8 @@
-<% content_for :title, "Add a Comment" %>
+<% content_for :title, "Ajoute un commentaire" %>
 <!-- Affichage Stylisé du Gossip-->
 <% if !@comment.nil? && @comment.errors.any? %>
 	<div class="alert alert-danger">
-	  <p>We were not able to add your comment for the following reasons :</p>
+	  <p>Tu ne peux pas ajouter un commentaire pouur les raisons suivantes :</p>
 	  <ul>
 	    <% @comment.errors.full_messages.each do |message| %>
 	      <li><%= message %></li>
@@ -10,3 +10,16 @@
 	  </ul>
 	</div>
 <% end %>
+
+<div class ='align-middle text-center'>
+	<div class="card m-5 p-5" style="height:300px">
+		<div class="card-body">		
+			<%= form_tag gossip_comments_path do %>
+			  <h5 class="cart-title"><%= label_tag 'Lâche ton com baby !' %></h5>
+			  <p class="cart-title"><%= text_area_tag 'content', @comment.content %></p>
+			  <br /> <br />
+			  <%= submit_tag "Ajoute ton commentaire", class: 'btn btn-danger' %>
+			<% end %>
+		</div>
+	</div>
+</div>
