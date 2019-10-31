@@ -4,10 +4,6 @@
         <div class="container">
           <h1 class="jumbotron-heading">Bienvenue sur la page de  <%= @user.first_name %> <%= @user.last_name %> ! </h1>
           <p class="lead text-muted">Ici, c'est le profil de ce user, c'est stylé nan ?</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Commenter</a>
-            <a href="#" class="btn btn-secondary my-2">liker</a>
-          </p>
         </div>
       </section>
 
@@ -44,7 +40,7 @@
                   <p class="card-text"><%= gossip.title %> by <%= gossip.user.first_name %></p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <%= link_to "View", gossip_path(:id => gossip.id), :class => "btn btn-sm btn-outline-secondary" %>
                       <button type="button" class="btn btn-sm btn-outline-secondary">comment</button>
                     </div>
                     <small class="text-muted">crée le : <%= gossip.created_at %></small>

@@ -2,7 +2,7 @@ module SessionsHelper
 
    def current_user
     User.find_by(id: session[:user_id])
-  end
+   end
 
    def login(user)
     session[:user_id] = user.id
@@ -12,6 +12,8 @@ module SessionsHelper
   	(session[:user_id].nil?)? (return false) : (return true)
   end
 
-  def is_owner?
-  	()
+  def is_owner?(id)
+  	(current_user.id == id)? (return true) : (return false)
+  end
+  
 end

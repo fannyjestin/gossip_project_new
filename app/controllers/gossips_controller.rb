@@ -3,6 +3,9 @@ class GossipsController < ApplicationController
   before_action :authenticate_user, only: [:new, :edit, :update, :create, :destroy]
 #valable pour les méthodes entre crochet
 
+  before_action :good_user, only: [:edit, :update, :destroy]
+
+
   def index
     params[:gossip_array] = Gossip.all 
    puts "##" *60
@@ -14,6 +17,7 @@ class GossipsController < ApplicationController
   end
 
   def create
+  
     puts "$" * 60
     puts "ceci est le contenu de params :"
     puts params
@@ -73,6 +77,15 @@ end
         unless current_user
           flash[:danger] = "Connecte toi pour accéder à la page :)"
           redirect_to new_session_path
+      end
+    end 
+
+      def good_user
+        if is_owner?(Gossip.find(params[:id]).user_id)
+          flash[:success] = "Tu as bien modifié/supprimé TON gossip :)"
+
+        else flash[:danger] = "Tu n'es pas le propriétaire de ce gossip, tu n'as pas accès à cette fonctionnalité :)"
+          redirect_to gossips_path
       end
     end 
 
