@@ -1,2 +1,12 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<% content_for :title, "Add a Comment" %>
+<!-- Affichage Stylisé du Gossip-->
+<% if !@comment.nil? && @comment.errors.any? %>
+	<div class="alert alert-danger">
+	  <p>We were not able to add your comment for the following reasons :</p>
+	  <ul>
+	    <% @comment.errors.full_messages.each do |message| %>
+	      <li><%= message %></li>
+	    <% end %>
+	  </ul>
+	</div>
+<% end %>

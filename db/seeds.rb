@@ -43,7 +43,8 @@ nb_user.times do |x|
     description: Faker::Lorem.paragraph,
     email: Faker::Internet.email,
     age: rand(16..80),
-    city_id: cities.sample.id)
+    city_id: cities.sample.id,
+    password: "azerty")
   users << user
   puts "Seeding user nb#{x}"
 end

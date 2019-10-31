@@ -20,6 +20,8 @@
 
 
 
+  <body>
+
   <!-- Navigation -->
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,13 +37,20 @@
       </li>
       <li class="nav-link">
           <%= link_to "Contact", contact_path, :class => "nav_item active" %>
+            <li class="nav-link">
+      <%= link_to "S'inscrire", new_user_path, :class => "nav_item active" %>
       </li> 
     </ul>       
   </div>
 </nav>
 
+ <!-- FLASH MESSAGES -->
 
-  <body>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "alert-#{key}" %>
+    <% end %>
+    
+
     <%= yield %>
   </body>
 </html>

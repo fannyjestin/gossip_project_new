@@ -2,7 +2,7 @@
 
      <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Bienvenue sur la page de  <%= params[:user].first_name %> <%= params[:user].last_name %> ! </h1>
+          <h1 class="jumbotron-heading">Bienvenue sur la page de  <%= @user.first_name %> <%= @user.last_name %> ! </h1>
           <p class="lead text-muted">Ici, c'est le profil de ce user, c'est stylé nan ?</p>
           <p>
             <a href="#" class="btn btn-primary my-2">Commenter</a>
@@ -19,11 +19,11 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card mb-12 box-shadow">
-                  <p class="card-text">Informations sur <%= params[:user].first_name %> <%= params[:user].last_name %> <br/>
-                    Prénom : <%= params[:user].first_name %> <br/>
-                    Nom de Famille : <%= params[:user].last_name %> <br/>
-                    Description : <%= params[:user].description %> <br/>
-                    Ville : <%=link_to params[:user].city.name, city_path(:id => params[:user].city_id) %> <br/>
+                  <p class="card-text">Informations sur <%= @user.first_name %> <%= @user.last_name %> <br/>
+                    Prénom : <%= @user.first_name %> <br/>
+                    Nom de Famille : <%= @user.last_name %> <br/>
+                    Description : <%= @user.description %> <br/>
+                    Ville : <%=link_to @user.city.name, city_path(:id => @user.city_id) %> <br/>
 
                   </p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -37,7 +37,7 @@
 
 
 <div class="row">
-  <p> <% params[:user].gossips.each do |gossip|  %> </p>
+  <p> <% @user.gossips.each do |gossip|  %> </p>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
                 <div class="card-body">

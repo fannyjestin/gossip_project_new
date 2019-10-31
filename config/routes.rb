@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
 root "gossips#index"
 
-resources :gossips
 resources :users
 resources :cities 
-resources :comments
+resources :gossips do
+	resources :comments
+  end 
+resources :sessions, only: [:new, :create, :destroy]
+
 
 
   get '/contact', to: 'static_pages#contact'

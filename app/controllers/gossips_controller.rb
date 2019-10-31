@@ -1,10 +1,11 @@
 class GossipsController < ApplicationController
-
+  
   def index
     params[:gossip_array] = Gossip.all 
    puts "##" *60
       	puts params[:gossip_array]
   end
+
 
 
   def new
@@ -19,10 +20,13 @@ class GossipsController < ApplicationController
                    title: params[:gossip_title],
                    content: params[:gossip_content],
                    user_id: 1)
+    @gossip.user = User.find_by(id: session[:user_id])
 
   
   if @gossip.save
-    redirect_to :action => 'index', notice: "Bravo, vous avez enregitré votre potin!"
+    flash[:success] = "Potin bien créé !"
+    redirect_to root_path
+
 #redirect mettre action, render mettre juste la methode
   else
     render "new"
@@ -49,6 +53,7 @@ end
 
   def show
      @gossip = Gossip.find(params[:id])
+     @comments = Comment.where(gossip_id: params[:id]).all
   end
 
 
@@ -62,4 +67,6 @@ end
 
   end
 
-end
+
+end 
+
